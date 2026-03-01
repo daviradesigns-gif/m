@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Essence Verte | Botanical Perfume</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --primary-dark: #1A2F28;
+            --primary-green: #2C4A3E;
+            --accent-sage: #8FA696;
+            --bg-cream: #F5F5F0;
+            --text-dark: #1a1a1a;
+            --gold: #C5A059;
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: var(--primary-dark);
+            color: var(--bg-cream);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--accent-sage);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .cart-icon {
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(26, 47, 40, 0.6), rgba(26, 47, 40, 0.4)), url('https://images.unsplash.com/photo-1615634260167-c8cdede054de?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--bg-cream);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            background-color: var(--bg-cream);
+            color: var(--primary-dark);
+            border: 1px solid var(--bg-cream);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--bg-cream);
+        }
+
+        /* --- PRODUCT SHOWCASE --- */
+        .product-section {
+            padding: 80px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .product-image {
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 20px 20px 0px var(--accent-sage);
+        }
+
+        .product-details h2 {
+            font-size: 3rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: block;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .description {
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .notes-container {
+            margin-bottom: 40px;
+        }
+
+        .note-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .add-to-cart {
+            background-color: var(--primary-dark);
+            color: var(--bg-cream);
+            width: 100%;
+            padding: 20px;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--primary-green);
+        }
+
+        /* --- INGREDIENTS / BANNER --- */
+        .ingredients-banner {
+            background-color: var(--primary-green);
+            color: var(--bg-cream);
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .ingredients-banner h2 {
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+
+        .ingredients-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .ingredient {
+            max-width: 200px;
+        }
+
+        .ingredient h3 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-dark);
+            color: #888;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.8rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .product-section {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="logo">L'ESSENCE VERTE</div>
+        <div class="nav-links">
+            <a href="#">Shop</a>
+            <a href="#">Our Story</a>
+            <a href="#">Sustainability</a>
+            <a href="#">Journal</a>
+        </div>
+        <div class="cart-icon" onclick="alert('Cart is empty')">
+            Cart (0)
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <h1>Nature's Memory</h1>
+        <p>A scent that captures the essence of a deep forest morning. 100% Organic, Cruelty-Free, and Ethically Sourced.</p>
+        <button class="btn" onclick="document.getElementById('shop').scrollIntoView({behavior: 'smooth'})">Discover the Essence</button>
+    </header>
+
+    <!-- PRODUCT SECTION -->
+    <section id="shop" class="product-section">
+        <div class="product-image">
+            <!-- Placeholder image for perfume bottle -->
+            <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?q=80&w=800&auto=format&fit=crop" alt="Green Perfume Bottle">
+        </div>
+        <div class="product-details">
+            <h2>The Forest Edit</h2>
+            <span class="price">$125.00</span>
+            <p class="description">
+                An enchanting fragrance that blends crisp citrus top notes with a rich, earthy base. 
+                Designed for those who find peace in the wilderness. 
+                Hand-poured in small batches using sustainable glass.
+            </p>
+
+            <div class="notes-container">
+                <h3>Olfactory Pyramid</h3>
+                <div class="note-item">
+                    <span>Top Notes</span>
+                    <span>Bergamot, Mint, Lime</span>
+                </div>
+                <div class="note-item">
+                    <span>Heart Notes</span>
+                    <span>Jasmine, Green Tea, Basil</span>
+                </div>
+                <div class="note-item">
+                    <span>Base Notes</span>
+                    <span>Cedarwood, Oakmoss, Amber</span>
+                </div>
+            </div>
+
+            <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+        </div>
+    </section>
+
+    <!-- INGREDIENTS BANNER -->
+    <section class="ingredients-banner">
+        <h2>Botanical Origins</h2>
+        <div class="ingredients-grid">
+            <div class="ingredient">
+                <h3>Sustainably Sourced</h3>
+                <p>Our Oakmoss is harvested from protected regions in France to ensure biodiversity.</p>
+            </div>
+            <div class="ingredient">
+                <h3>Organic Alcohol</h3>
+                <p>Distilled from organic wheat and grapes, ensuring a clean burn.</p>
+            </div>
+            <div class="ingredient">
+                <h3>Recyclable Glass</h3>
+                <p>Housed in thick, dark amber glass to preserve the scent and reusable packaging.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2023 L'Essence Verte. All rights reserved.</p>
+        <p>Designed with Nature in Mind.</p>
+    </footer>
+
+    <script>
+        function addToCart() {
+            const btn = document.querySelector('.add-to-cart');
+            const cartCount = document.querySelector('.cart-icon');
+            
+            // Simple animation effect
+            btn.innerHTML = "Added!";
+            btn.style.backgroundColor = "#8FA696"; // Sage green
+            
+            setTimeout(() => {
+                btn.innerHTML = "Add to Cart";
+                btn.style.backgroundColor = "#1A2F28"; // Reset
+                
+                // Simulate cart update
+                alert("Product added to your cart. Nature thanks you.");
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>
